@@ -87,6 +87,7 @@ func (p *Provider) Provision(ctx caddy.Context) error {
 	p.Provider.Username = repl.ReplaceAll(p.Provider.Username, "")
 	p.Provider.Password = repl.ReplaceAll(p.Provider.Password, "")
 	p.Provider.APIKey = repl.ReplaceAll(p.Provider.APIKey, "")
+	p.Provider.DomainOverride = repl.ReplaceAll(p.Provider.DomainOverride, "")
 	return nil
 }
 
@@ -166,6 +167,18 @@ func (p *Provider) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
 					return d.ArgErr()
 				}
 				p.Provider.Insecure = true
+
+			case "domain_override":
+				if p.Provider.DomainOverride != "" {
+					return d.Err("domain_override already set")
+				}
+				if !d.NextArg() {
+					return d.ArgErr()
+				}
+				p.Provider.DomainOverride = d.Val()
+				if d.NextArg() {
+					return d.ArgErr()
+				}
 
 			default:
 				return d.Errf("unrecognised subdirective %q", d.Val())
