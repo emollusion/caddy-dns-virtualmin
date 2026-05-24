@@ -1,17 +1,17 @@
 # caddy-dns-virtualmin
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/caddy-dns/virtualmin.svg)](https://pkg.go.dev/github.com/caddy-dns/virtualmin)
+[![Go Reference](https://pkg.go.dev/badge/github.com/emollusion/caddy-dns-virtualmin.svg)](https://pkg.go.dev/github.com/emollusion/caddy-dns-virtualmin)
 
 Caddy module: `dns.providers.virtualmin`
 
 This package implements the [Caddy](https://caddyserver.com) DNS provider module for [Virtualmin](https://www.virtualmin.com/), enabling automatic TLS certificates via the ACME DNS-01 challenge for domains whose DNS is managed by Virtualmin/Webmin (BIND).
 
-It wraps the [libdns/virtualmin](https://github.com/libdns/virtualmin) provider library.
+It wraps the [libdns-virtualmin](https://github.com/emollusion/libdns-virtualmin) provider library.
 
 ## Requirements
 
 - **Virtualmin ≥ 7.50.0** — earlier versions have a bug ([#1104](https://github.com/virtualmin/virtualmin-gpl/issues/1104)) that corrupts TXT record values written via the API.
-- The target domain must be a **Virtualmin virtual server with DNS enabled**. See [libdns/virtualmin](https://github.com/libdns/virtualmin) for user setup instructions.
+- The target domain must be a **Virtualmin virtual server with DNS enabled**. See [libdns-virtualmin](https://github.com/emollusion/libdns-virtualmin) for user setup instructions.
 
 ## Building Caddy with this module
 
@@ -19,15 +19,15 @@ Use [xcaddy](https://github.com/caddyserver/xcaddy):
 
 ```shell
 xcaddy build \
-  --with github.com/caddy-dns/virtualmin
+  --with github.com/emollusion/caddy-dns-virtualmin
 ```
 
 For local development against unpublished repos:
 
 ```shell
 xcaddy build \
-  --with github.com/caddy-dns/virtualmin=./caddy-dns-virtualmin \
-  --with github.com/libdns/virtualmin=./libdns-virtualmin
+  --with github.com/emollusion/caddy-dns-virtualmin=./caddy-dns-virtualmin \
+  --with github.com/emollusion/libdns-virtualmin=./libdns-virtualmin
 ```
 
 Verify the module loaded:
@@ -150,7 +150,7 @@ Prefer a **Webmin API key** over username/password:
 3. Generate a new token and copy it.
 4. Set it as `api_key` or in the `VIRTUALMIN_API_KEY` environment variable.
 
-For full user setup instructions including required ACL settings, see [libdns/virtualmin](https://github.com/libdns/virtualmin).
+For full user setup instructions including required ACL settings, see [libdns-virtualmin](https://github.com/emollusion/libdns-virtualmin).
 
 ## Propagation settings
 

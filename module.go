@@ -1,6 +1,6 @@
 // Package virtualmin provides a Caddy DNS provider module for Virtualmin/Webmin
 // (BIND-backed DNS zones). It implements the dns.providers.virtualmin Caddy
-// module, which wraps the github.com/libdns/virtualmin libdns provider.
+// module, which wraps the github.com/emollusion/libdns-virtualmin libdns provider.
 //
 // # Caddyfile syntax
 //
@@ -54,14 +54,14 @@ package virtualmin
 import (
 	"github.com/caddyserver/caddy/v2"
 	"github.com/caddyserver/caddy/v2/caddyconfig/caddyfile"
-	libdnsvirtualmin "github.com/libdns/virtualmin"
+	libdnsvirtualmin "github.com/emollusion/libdns-virtualmin"
 )
 
 func init() {
 	caddy.RegisterModule(Provider{})
 }
 
-// Provider wraps the libdns/virtualmin provider as a Caddy DNS module.
+// Provider wraps the libdns-virtualmin provider as a Caddy DNS module.
 //
 // It exposes the dns.providers.virtualmin module ID and supports both
 // Caddyfile and JSON (Caddy API) configuration.
